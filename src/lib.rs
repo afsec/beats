@@ -3,7 +3,8 @@
 
 fn get_num_seconds_from_midnight() -> u32 {
     use chrono::prelude::*;
-    let now: DateTime<Utc> = Utc::now();
+    let bmt = FixedOffset::east(60 * 60);
+    let now: DateTime<FixedOffset> = Utc::now().with_timezone(&bmt);
     now.num_seconds_from_midnight()
 }
 
